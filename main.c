@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mreyes-m <mreyes-m@student.42barcelon      +#+  +:+       +#+        */
+/*   By: ilopez-g <ilopez-g@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 08:39:23 by mreyes-m          #+#    #+#             */
-/*   Updated: 2026/06/01 08:40:43 by mreyes-m         ###   ########.fr       */
+/*   Updated: 2026/06/02 16:23:56 by ilopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,15 @@ int	main(int argc, char **argv)
     if (argc < 2)
         return (0);
     
-    printf("%p Pointer at the begining of the program\n", (void *)&a);
+    ft_printf(1, "%p Pointer at the begining of the program\n", (void *)&a);
 
     v = ft_split(argv[1], ' ');
     stack_fill(&a, v);
     free_split(v);
     while (a)
     {
-        printf("%d Content of the node\n", a->value);
-        printf("%p Pointer in the loop\n", (void *)**a);
+        ft_printf(1, "%d Content of the node\n", a->value);
+        ft_printf(1, "%p Pointer in the loop\n", (void *)**a);
         a = a->next;
     }
     free_stack(&a);
