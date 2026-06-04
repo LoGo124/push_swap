@@ -6,7 +6,7 @@
 /*   By: ilopez-g <ilopez-g@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 15:35:12 by ilopez-g          #+#    #+#             */
-/*   Updated: 2026/06/02 16:06:42 by ilopez-g         ###   ########.fr       */
+/*   Updated: 2026/06/03 15:42:10 by ilopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ void	free_data(t_data *data)
 			_free_stack_(data->b);
 		if (data->flags)
 			free(data->flags);
+		if (data->bench)
+			free(data->bench);
 		free(data);
 	}
 }

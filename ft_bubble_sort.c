@@ -1,25 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_parse.c                                         :+:      :+:    :+:   */
+/*   ft_bubble_sort.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilopez-g <ilopez-g@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/02 11:12:35 by ilopez-g          #+#    #+#             */
-/*   Updated: 2026/06/04 22:24:30 by ilopez-g         ###   ########.fr       */
+/*   Created: 2026/06/03 08:53:31 by mreyes-m          #+#    #+#             */
+/*   Updated: 2026/06/03 15:58:27 by ilopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_data	*ft_parse(int ac, char **av)
+t_list    *ft_bubble_sort(t_list *head)
 {
-	t_data	*data;
+	t_list	*current;
+	int		swapped;
 
-	if (ac < 2)
-		return (NULL);
-	data = ft_init_data();
-	ft_load_flags(data, av);
-	ft_load_stack(data, av);
-	return (data);
+	swapped = 1;
+	while (swapped)
+	{
+		swapped = 0;
+		current = head;
+		while (current && current->next)
+		{
+			if (current->value > current->next->value)
+			{
+				ft_swap(&current);
+				swapped = 1;
+			}
+			current = current->next;
+		}
+	}
+	return (head);
 }

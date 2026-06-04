@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_parse.c                                         :+:      :+:    :+:   */
+/*   ft_data.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilopez-g <ilopez-g@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/02 11:12:35 by ilopez-g          #+#    #+#             */
-/*   Updated: 2026/06/04 22:24:30 by ilopez-g         ###   ########.fr       */
+/*   Created: 2026/06/04 12:29:37 by ilopez-g          #+#    #+#             */
+/*   Updated: 2026/06/04 22:16:38 by ilopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_data	*ft_parse(int ac, char **av)
+t_data	*ft_init_data(void)
 {
 	t_data	*data;
 
-	if (ac < 2)
+	data = malloc(sizeof(t_data));
+	if (!data)
 		return (NULL);
-	data = ft_init_data();
-	ft_load_flags(data, av);
-	ft_load_stack(data, av);
+	ft_init_stack(data);
+	ft_init_stack(data);
+	ft_init_flags(data);
+	ft_init_bench(data);
 	return (data);
 }

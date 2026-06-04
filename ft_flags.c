@@ -6,26 +6,23 @@
 /*   By: ilopez-g <ilopez-g@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 12:17:40 by ilopez-g          #+#    #+#             */
-/*   Updated: 2026/06/02 13:10:13 by ilopez-g         ###   ########.fr       */
+/*   Updated: 2026/06/04 22:50:08 by ilopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_flags	*ft_init_flags(void)
+void	ft_init_flags(t_data *data)
 {
-	t_flags	*flags;
-
-	flags = malloc(sizeof(t_flags));
-	if (!flags)
-		return (NULL);
-	flags->bench = 0;
-	flags->verbose = 0;
-	flags->adapt = 0;
-	flags->simple = 0;
-	flags->medium = 0;
-	flags->complex = 0;
-	return (flags);
+	data->flags = malloc(sizeof(t_flags));
+	if (!data->flags)
+		ft_exit(data);
+	data->flags->bench = 0;
+	data->flags->verbose = 0;
+	data->flags->adapt = 0;
+	data->flags->simple = 0;
+	data->flags->medium = 0;
+	data->flags->complex = 0;
 }
 
 int	ft_is_flag(char *str)
@@ -57,12 +54,12 @@ int	ft_check_flags(t_flags *flags)
 	return (1);
 }
 
-t_data	*ft_load_flags(t_data *data, char **av)
+void	ft_load_flags(t_data *data, char **av)
 {
 	int		i;
 
 	if (!data->flags)
-		return (NULL);
+		ft_exit(data);
 	i = 0;
 	while (av[++i])
 	{
@@ -80,6 +77,5 @@ t_data	*ft_load_flags(t_data *data, char **av)
 			data->flags->complex += 1;
 	}
 	if (!ft_check_flags(data->flags))
-		return (NULL);
-	return (data);
+		ft_exit(data);
 }

@@ -6,7 +6,7 @@
 /*   By: ilopez-g <ilopez-g@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 08:39:23 by mreyes-m          #+#    #+#             */
-/*   Updated: 2026/06/02 17:54:14 by ilopez-g         ###   ########.fr       */
+/*   Updated: 2026/06/04 15:32:41 by ilopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	main(int ac, char **av)
 	t_data	*data;
 
 	data = ft_parse(ac, av);
-	if(data->flags->bench->strategy)
-
+	ft_solve(data);
+	if (data->flags->bench)
+		ft_print_bench(data->bench);
+	return (0);
 }
