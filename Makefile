@@ -6,15 +6,15 @@
 #    By: ilopez-g <ilopez-g@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/04 22:32:48 by ilopez-g          #+#    #+#              #
-#    Updated: 2026/06/04 22:43:35 by ilopez-g         ###   ########.fr        #
+#    Updated: 2026/06/11 11:52:15 by ilopez-g         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
-SRCS = ft_bench.c ft_data.c ft_flags.c ft_operations.c ft_printf.c ft_solve.c ft_stack.c push_swap.c ft_bubble_sort.c ft_exit.c ft_node.c ft_parse.c ft_printv.c ft_split.c ft_str.c
+SRCS = ft_bench.c ft_data.c ft_flags.c ft_printf.c ft_solve.c ft_stack.c push_swap.c ft_exit.c ft_node.c ft_printv.c ft_split.c ft_str.c ft_push.c ft_rotate.c ft_rev_rotate.c ft_swap.c ft_solve_simple.c ft_solve_complex.c
 OBJS = $(SRCS:.c=.o)
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g
 
 all: $(NAME) Makefile push_swap.h
 
