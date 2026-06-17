@@ -6,7 +6,7 @@
 /*   By: ilopez-g <ilopez-g@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/03 10:11:42 by ilopez-g          #+#    #+#             */
-/*   Updated: 2026/06/04 22:51:28 by ilopez-g         ###   ########.fr       */
+/*   Updated: 2026/06/12 08:47:44 by ilopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,11 @@ int	ft_printf(int fd, char const *str, ...)
 	while (str[++i])
 	{
 		if (str[i] == '%' && str[i + 1] == '%')
-			count += ft_putchar(str[i++], fd);
+			count += ft_putchar(fd, str[i++]);
 		else if (str[i] == '%')
 			count += ft_printv(fd, str + i++, args);
 		else
-			count += ft_putchar(str[i], fd);
+			count += ft_putchar(fd, str[i]);
 	}
 	return (count);
 }

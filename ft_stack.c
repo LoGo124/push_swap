@@ -6,53 +6,11 @@
 /*   By: ilopez-g <ilopez-g@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/04 12:41:41 by ilopez-g          #+#    #+#             */
-/*   Updated: 2026/06/04 19:50:31 by ilopez-g         ###   ########.fr       */
+/*   Updated: 2026/06/17 11:38:53 by ilopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-t_stack	*ft_init_stack(t_data *data)
-{
-	t_stack	*stack;
-
-	stack = malloc(sizeof(t_stack));
-	if (!stack)
-		ft_exit(data);
-	stack->top = NULL;
-	stack->bot = NULL;
-	stack->size = 0;
-	return (stack);
-}
-
-void	ft_load_stack(t_data *data, char **av)
-{
-	stack_fill(&data->a->top, av);
-	data->a->bot = find_last_node(data->a->top);
-	while (data->a->top)
-	{
-		data->a->size++;
-		data->a->top = data->a->top->next;
-	}
-}
-
-void	stack_fill(t_stack_node **a, char **v)
-{
-	int	i;
-
-	i = 0;
-	while (v[i])
-	{
-		append_node(a, ft_atoi(v[i]));
-		i++;
-	}
-	//ft_printf("%p Pointer at the end of stack_fill\n", (void *)a);
-	ft_printf("%d Value of the first node in stack_fill\n", (*a)->value);
-	//ft_printf("%p Pointer to the first node in stack_fill\n", (void *)(*a));
-	//ft_printf("%p Pointer to the last node in stack_fill\n", (void *)(find_last_node(*a)));
-	ft_printf("%d Value of the last node in stack_fill\n", find_last_node(*a)->value);
-
-}
 
 void	append_node(t_stack_node **node, int value)
 {
@@ -77,4 +35,60 @@ void	append_node(t_stack_node **node, int value)
 		last_node->next = new_node;
 		new_node->prev = last_node;
 	}
+}
+
+void	stack_fill(t_data *data, char **v)
+{
+	int				i;
+
+	i = 0;
+	while (v[i])
+	{
+		if (!ft_is_number(v[i]))
+			ft_exit(data);
+		append_node(&data->a, ft_atoi(v[i++]));
+	}
+}
+
+int	check_stack(t_stack_node *node)
+{
+	t_stack_node	*compared_node;
+
+	if (!node)
+		return (1);
+	while (node)
+	{
+		compared_node = node->next;
+		while (compared_node)
+		{
+			if (node->value == compared_node->value)
+				return (0);
+			compared_node = compared_node->next;
+		}
+		node = node->next;
+	}
+	return (1);
+}
+
+void	ft_load_stack(t_data *data, char **av)
+{
+	int		i;
+	char	**splited_arg;
+
+	i = -1;
+	while (av[++i])
+	{
+		if (ft_is_number(av[i]))
+			append_node(&data->a, ft_atoi(av[i]));
+		else if (!ft_is_flag(av[i]))
+		{
+			splited_arg = ft_split(av[i], ' ');
+			if (!splited_arg)
+				ft_exit(data);
+			stack_fill(data, splited_arg);
+			free_split(splited_arg);
+		}
+	}
+	if (!check_stack(data->a))
+		ft_exit(data);
 }

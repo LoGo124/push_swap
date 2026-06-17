@@ -6,7 +6,7 @@
 /*   By: ilopez-g <ilopez-g@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 15:35:12 by ilopez-g          #+#    #+#             */
-/*   Updated: 2026/06/03 15:42:10 by ilopez-g         ###   ########.fr       */
+/*   Updated: 2026/06/07 19:08:59 by ilopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,28 +37,14 @@ void	free_stack(t_stack_node **node)
 	}
 }
 
-void	_free_stack_(t_stack *stack)
-{
-	t_stack_node	*node;
-	t_stack_node	*temp;
-
-	node = stack->top;
-	while (node)
-	{
-		temp = node;
-		node = node->next;
-		free(temp);
-	}
-}
-
 void	free_data(t_data *data)
 {
 	if (data)
 	{
 		if (data->a)
-			_free_stack_(data->a);
+			free_stack(&data->a);
 		if (data->b)
-			_free_stack_(data->b);
+			free_stack(&data->b);
 		if (data->flags)
 			free(data->flags);
 		if (data->bench)

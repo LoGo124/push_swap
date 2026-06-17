@@ -6,11 +6,31 @@
 /*   By: ilopez-g <ilopez-g@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 11:27:15 by ilopez-g          #+#    #+#             */
-/*   Updated: 2026/06/02 16:18:32 by ilopez-g         ###   ########.fr       */
+/*   Updated: 2026/06/11 11:56:31 by ilopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	isdigit(int c)
+{
+	return (c >= '0' && c <= '9');
+}
+
+int	ft_is_number(char *str)
+{
+	int	i;
+
+	if (!str || !*str)
+		return (0);
+	i = 0;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	while (str[i])
+		if (!isdigit(str[i++]))
+			return (0);
+	return (1);
+}
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {

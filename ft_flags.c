@@ -6,7 +6,7 @@
 /*   By: ilopez-g <ilopez-g@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 12:17:40 by ilopez-g          #+#    #+#             */
-/*   Updated: 2026/06/04 22:50:08 by ilopez-g         ###   ########.fr       */
+/*   Updated: 2026/06/16 14:06:33 by ilopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,15 @@ int	ft_is_flag(char *str)
 {
 	if (!ft_memcmp(str, "--verbose", 9))
 		return (1);
-	if (!ft_memcmp(str, "--benchmark", 11))
+	else if (!ft_memcmp(str, "--bench", 7))
 		return (1);
-	if (!ft_memcmp(str, "--adaptative", 12))
+	else if (!ft_memcmp(str, "--adaptative", 12))
 		return (1);
-	if (!ft_memcmp(str, "--simple", 8))
+	else if (!ft_memcmp(str, "--simple", 8))
 		return (1);
-	if (!ft_memcmp(str, "--intermediate", 14))
+	else if (!ft_memcmp(str, "--intermediate", 14))
 		return (1);
-	if (!ft_memcmp(str, "--complex", 9))
+	else if (!ft_memcmp(str, "--complex", 9))
 		return (1);
 	return (0);
 }
@@ -47,7 +47,7 @@ int	ft_check_flags(t_flags *flags)
 	int	i;
 
 	i = flags->adapt + flags->simple + flags->medium + flags->complex;
-	if (i > 1)
+	if (i > 1 || flags->bench > 1)
 		return (0);
 	else if (i == 0)
 		flags->adapt = 1;
@@ -65,15 +65,15 @@ void	ft_load_flags(t_data *data, char **av)
 	{
 		if (!ft_memcmp(av[i], "--verbose", 9))
 			data->flags->verbose += 1;
-		if (!ft_memcmp(av[i], "--bench", 11))
+		else if (!ft_memcmp(av[i], "--bench", 7))
 			data->flags->bench += 1;
-		if (!ft_memcmp(av[i], "--adaptative", 12))
+		else if (!ft_memcmp(av[i], "--adaptative", 12))
 			data->flags->adapt += 1;
-		if (!ft_memcmp(av[i], "--simple", 8))
+		else if (!ft_memcmp(av[i], "--simple", 8))
 			data->flags->simple += 1;
-		if (!ft_memcmp(av[i], "--intermediate", 14))
+		else if (!ft_memcmp(av[i], "--intermediate", 14))
 			data->flags->medium += 1;
-		if (!ft_memcmp(av[i], "--complex", 9))
+		else if (!ft_memcmp(av[i], "--complex", 9))
 			data->flags->complex += 1;
 	}
 	if (!ft_check_flags(data->flags))
