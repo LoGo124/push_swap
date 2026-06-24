@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_push.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilopez-g <ilopez-g@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: mreyes-m <mreyes-m@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/07 20:20:56 by mreyes-m          #+#    #+#             */
-/*   Updated: 2026/06/11 09:16:28 by ilopez-g         ###   ########.fr       */
+/*   Updated: 2026/06/16 17:06:25 by mreyes-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	ft_pb(t_data *data)
 	ft_push(&data->a, &data->b);
 	write(1, "pb\n", 3);
 	data->bench->pb++;
+	data->bench->total_ops++;
 }
 
 void	ft_pa(t_data *data)
@@ -41,4 +42,5 @@ void	ft_pa(t_data *data)
 	ft_push(&data->b, &data->a);
 	write(1, "pa\n", 3);
 	data->bench->pa++;
+	data->bench->total_ops++;
 }

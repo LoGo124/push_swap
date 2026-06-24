@@ -6,7 +6,7 @@
 /*   By: ilopez-g <ilopez-g@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/04 12:41:41 by ilopez-g          #+#    #+#             */
-/*   Updated: 2026/06/17 11:38:53 by ilopez-g         ###   ########.fr       */
+/*   Updated: 2026/06/24 13:24:28 by ilopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	append_node(t_stack_node **node, int value)
 		return ;
 	new_node->value = value;
 	new_node->next = NULL;
+	new_node->index = -1;
 	if (*node == NULL)
 	{
 		*node = new_node;

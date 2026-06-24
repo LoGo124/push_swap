@@ -6,7 +6,7 @@
 /*   By: ilopez-g <ilopez-g@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 12:17:40 by ilopez-g          #+#    #+#             */
-/*   Updated: 2026/06/16 14:06:33 by ilopez-g         ###   ########.fr       */
+/*   Updated: 2026/06/24 13:23:42 by ilopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	ft_load_flags(t_data *data, char **av)
 
 	if (!data->flags)
 		ft_exit(data);
-	i = 0;
+	i = -1;
 	while (av[++i])
 	{
 		if (!ft_memcmp(av[i], "--verbose", 9))

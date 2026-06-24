@@ -6,7 +6,7 @@
 /*   By: mreyes-m <mreyes-m@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 16:03:05 by ilopez-g          #+#    #+#             */
-/*   Updated: 2026/06/16 09:30:00 by mreyes-m         ###   ########.fr       */
+/*   Updated: 2026/06/24 13:11:26 by mreyes-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,17 +76,39 @@ void	select_strategy(t_data *data)
 	}
 }
 
+void	tiny_sort(t_data *data)
+{
+	if (!(data->a) || !(&data->a) || ft_lstsize(data->a) <= 1)
+		return;
+	if (ft_lstsize(data->a) == 2)
+			ft_sa(data);
+	else if (ft_lstsize(data->a) == 3)
+			sort_three(data);
+	else if (ft_lstsize(data->a) == 4)
+			sort_four(data);
+	else if (ft_lstsize(data->a) == 5)
+			sort_five(data);
+	free(data->flags);
+	ft_init_flags(data);
+
+}
+#include <stdio.h>
 void	ft_solve(t_data *data)
 {
 	calc_disorder(data);
 	if (is_sorted(data->a))
 		return ;
-	if (data->flags->adapt)
-		select_strategy(data);
-	if (data->flags->simple)
-		ft_solve_simple(data);
-	else if (data->flags->medium)
-		ft_printf(1, "Medium\n");//ft_solve_medium(data);
-	else if (data->flags->complex)
-		ft_solve_complex(data);
+	if (ft_lstsize(data->a) <= 5)
+		tiny_sort(data);
+	else
+	{
+		if (data->flags->adapt)
+			select_strategy(data);
+		if (data->flags->simple)
+			ft_solve_simple(data);
+		else if (data->flags->medium)
+			ft_solve_medium(data);
+		else if (data->flags->complex)
+			ft_solve_complex(data);
+	}
 }

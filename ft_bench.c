@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bench.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilopez-g <ilopez-g@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: mreyes-m <mreyes-m@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/04 12:35:41 by ilopez-g          #+#    #+#             */
-/*   Updated: 2026/06/04 22:47:47 by ilopez-g         ###   ########.fr       */
+/*   Updated: 2026/06/16 14:22:58 by mreyes-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,12 @@ void	ft_print_bench(t_bench *bench)
 {
 	ft_printf(2, "Strategy: %s\n", bench->strategy);
 	ft_printf(2, "Disorder: %d%%\n", (int)(bench->disorder * 100));
+	ft_printf(2, "Total operations: %d\n", bench->total_ops);
+	ft_printf(2, "sa: %d\n", bench->sa);
+	ft_printf(2, "sb: %d\n", bench->sb);
+	ft_printf(2, "ss: %d\n", bench->ss);
+	ft_printf(2, "pa: %d\n", bench->pa);
+	ft_printf(2, "pb: %d\n", bench->pb);
 	ft_printf(2, "ra: %d\n", bench->ra);
 	ft_printf(2, "rb: %d\n", bench->rb);
 	ft_printf(2, "rr: %d\n", bench->rr);

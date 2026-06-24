@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ilopez-g <ilopez-g@student.42barcelona.    +#+  +:+       +#+         #
+#    By: mreyes-m <mreyes-m@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/04 22:32:48 by ilopez-g          #+#    #+#              #
-#    Updated: 2026/06/11 11:52:15 by ilopez-g         ###   ########.fr        #
+#    Updated: 2026/06/23 11:57:08 by mreyes-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
-SRCS = ft_bench.c ft_data.c ft_flags.c ft_printf.c ft_solve.c ft_stack.c push_swap.c ft_exit.c ft_node.c ft_printv.c ft_split.c ft_str.c ft_push.c ft_rotate.c ft_rev_rotate.c ft_swap.c ft_solve_simple.c ft_solve_complex.c
+SRCS = ft_bench.c ft_data.c ft_flags.c ft_printf.c ft_solve.c ft_stack.c push_swap.c ft_exit.c ft_node.c ft_printv.c ft_split.c ft_str.c ft_push.c ft_rotate.c ft_rev_rotate.c ft_swap.c ft_solve_simple.c ft_solve_complex.c ft_solve_medium.c ft_tiny_sort.c
 OBJS = $(SRCS:.c=.o)
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g

@@ -6,7 +6,7 @@
 /*   By: ilopez-g <ilopez-g@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 08:29:42 by mreyes-m          #+#    #+#             */
-/*   Updated: 2026/06/17 11:38:26 by ilopez-g         ###   ########.fr       */
+/*   Updated: 2026/06/24 13:25:22 by ilopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,10 @@
 # include <stdlib.h>
 # include <stddef.h>
 
-// To delete
-//# include <stdio.h>
-
 typedef struct s_stack_node
 {
 	int					value;
+	int                 index;
 	struct s_stack_node	*next;
 	struct s_stack_node	*prev;
 }	t_stack_node;
@@ -75,6 +73,7 @@ t_data			*ft_init_data(void);
 int				ft_lstsize(t_stack_node *node);
 void			ft_load_stack(t_data *data, char **av);
 void			stack_fill(t_data *data, char **v);
+void            ft_assign_indices(t_stack_node *node);
 
 // ft_flag.c
 void			ft_init_flags(t_data *data);
@@ -111,8 +110,13 @@ void			ft_exit(t_data *data);
 
 // ALGO
 void			ft_solve_simple(t_data *data);
-//void			ft_solve_medium(t_data *data);
+void			ft_solve_medium(t_data *data);
 void			ft_solve_complex(t_data *data);
+
+// TINY SORT
+void			sort_three(t_data *data);
+void			sort_four(t_data *data);
+void			sort_five(t_data *data);
 
 // MOVEMENTS
 // ft_push.c

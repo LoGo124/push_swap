@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilopez-g <ilopez-g@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: mreyes-m <mreyes-m@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/07 20:22:39 by mreyes-m          #+#    #+#             */
-/*   Updated: 2026/06/11 09:19:51 by ilopez-g         ###   ########.fr       */
+/*   Updated: 2026/06/16 17:36:08 by mreyes-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	ft_sa(t_data *data)
 	ft_swap(&data->a);
 	write(1, "sa\n", 3);
 	data->bench->sa++;
+	data->bench->total_ops++;
 }
 
 void	ft_sb(t_data *data)
@@ -43,6 +44,7 @@ void	ft_sb(t_data *data)
 	ft_swap(&data->b);
 	write(1, "sb\n", 3);
 	data->bench->sb++;
+	data->bench->total_ops++;
 }
 
 void	ft_ss(t_data *data)
@@ -51,4 +53,5 @@ void	ft_ss(t_data *data)
 	ft_swap(&data->b);
 	write(1, "ss\n", 3);
 	data->bench->ss++;
+	data->bench->total_ops++;
 }
