@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bench.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mreyes-m <mreyes-m@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: ilopez-g <ilopez-g@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/04 12:35:41 by ilopez-g          #+#    #+#             */
-/*   Updated: 2026/06/16 14:22:58 by mreyes-m         ###   ########.fr       */
+/*   Updated: 2026/06/28 17:54:18 by ilopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,30 @@ void	ft_init_bench(t_data *data)
 	data->bench->rr = 0;
 }
 
+void	ft_update_bench(t_data *data)
+{
+	if (data->flags->adapt)
+	{
+		if (data->flags->simple)
+			data->bench->strategy = "Adaptative / O(n^2)";
+		else if (data->flags->medium)
+			data->bench->strategy = "Adaptative / O(n√n)";
+		else if (data->flags->complex)
+			data->bench->strategy = "Adaptative / O(n log n)";
+	}
+	else if (data->flags->simple)
+		data->bench->strategy = "Simple / O(n^2)";
+	else if (data->flags->medium)
+		data->bench->strategy = "Intermediate / O(n√n)";
+	else if (data->flags->complex)
+		data->bench->strategy = "Complex / O(n log n)";
+}
+
 void	ft_print_bench(t_bench *bench)
 {
 	ft_printf(2, "Strategy: %s\n", bench->strategy);
-	ft_printf(2, "Disorder: %d%%\n", (int)(bench->disorder * 100));
+	ft_printf(2, "Disorder: %d.%d%%\n", (int)(bench->disorder * 100), \
+(int)(bench->disorder * 10000) % 100);
 	ft_printf(2, "Total operations: %d\n", bench->total_ops);
 	ft_printf(2, "sa: %d\n", bench->sa);
 	ft_printf(2, "sb: %d\n", bench->sb);

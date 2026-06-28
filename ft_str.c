@@ -6,18 +6,18 @@
 /*   By: ilopez-g <ilopez-g@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 11:27:15 by ilopez-g          #+#    #+#             */
-/*   Updated: 2026/06/11 11:56:31 by ilopez-g         ###   ########.fr       */
+/*   Updated: 2026/06/28 19:40:09 by ilopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	isdigit(int c)
+static int	is_digit(int c)
 {
 	return (c >= '0' && c <= '9');
 }
 
-int	ft_is_number(char *str)
+int	is_number(char *str)
 {
 	int	i;
 
@@ -27,7 +27,7 @@ int	ft_is_number(char *str)
 	if (str[i] == '-' || str[i] == '+')
 		i++;
 	while (str[i])
-		if (!isdigit(str[i++]))
+		if (!is_digit(str[i++]))
 			return (0);
 	return (1);
 }
@@ -44,11 +44,11 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	return (diff);
 }
 
-int	ft_atoi(const char *nptr)
+long	ft_atoi(const char *nptr)
 {
-	int	i;
-	int	sign;
-	int	result;
+	int		i;
+	int		sign;
+	long	result;
 
 	i = 0;
 	sign = 1;
@@ -61,10 +61,7 @@ int	ft_atoi(const char *nptr)
 			sign = -1;
 		i++;
 	}
-	while (nptr[i] >= '0' && nptr[i] <= '9')
-	{
-		result = result * 10 + (nptr[i] - 48);
-		i++;
-	}
+	while (is_digit(nptr[i]))
+		result = result * 10 + (nptr[i++] - 48);
 	return (result * sign);
 }

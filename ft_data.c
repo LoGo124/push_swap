@@ -6,7 +6,7 @@
 /*   By: ilopez-g <ilopez-g@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/04 12:29:37 by ilopez-g          #+#    #+#             */
-/*   Updated: 2026/06/07 18:47:30 by ilopez-g         ###   ########.fr       */
+/*   Updated: 2026/06/28 18:13:36 by ilopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,20 @@ t_data	*ft_init_data(void)
 	ft_init_flags(data);
 	ft_init_bench(data);
 	return (data);
+}
+
+void	free_data(t_data *data)
+{
+	if (data)
+	{
+		if (data->a)
+			free_stack(&data->a);
+		if (data->b)
+			free_stack(&data->b);
+		if (data->flags)
+			free(data->flags);
+		if (data->bench)
+			free(data->bench);
+		free(data);
+	}
 }

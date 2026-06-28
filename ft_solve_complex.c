@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_solve_complex.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mreyes-m <mreyes-m@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: ilopez-g <ilopez-g@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 08:30:42 by mreyes-m          #+#    #+#             */
-/*   Updated: 2026/06/23 13:34:28 by mreyes-m         ###   ########.fr       */
+/*   Updated: 2026/06/28 19:20:13 by ilopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int *stack_to_array(t_stack_node *node)
+static int	*stack_to_array(t_stack_node *node)
 {
-	int	*array;
-	int	i;
+	int				*array;
+	int				i;
 	t_stack_node	*current;
-	
+
 	i = 0;
 	current = node;
 	array = malloc(ft_lstsize(node) * sizeof(int));
@@ -32,19 +32,19 @@ static int *stack_to_array(t_stack_node *node)
 	return (array);
 }
 
-static void bubble_sort(int *array, int size)
+static void	bubble_sort(int *array, int size)
 {
 	int	i;
 	int	j;
 	int	temp;
 
 	i = 0;
-	while(i < size - 1)
+	while (i < size - 1)
 	{
 		j = 0;
-		while(j < size - 1 - i)
+		while (j < size - 1 - i)
 		{
-			if(array[j] > array[j + 1])
+			if (array[j] > array[j + 1])
 			{
 				temp = array[j];
 				array[j] = array[j + 1];
@@ -56,28 +56,25 @@ static void bubble_sort(int *array, int size)
 	}
 }
 
-void ft_assign_indices(t_stack_node *node)
+void	ft_assign_indices(t_stack_node *current)
 {
-	int	*array;
-	int	size;
-	int	i;
-	t_stack_node	*current;
+	int				*array;
+	int				size;
+	int				i;
 
-	size = ft_lstsize(node);
-	array = stack_to_array(node);
+	size = ft_lstsize(current);
+	array = stack_to_array(current);
 	bubble_sort(array, size);
-	current = node;
 	while (current)
 	{
-		i = 0;
-		while(i < size)
+		i = -1;
+		while (++i < size)
 		{
 			if (current->value == array[i])
 			{
 				current->index = i;
-				break;
+				break ;
 			}
-			i++;
 		}
 		current = current->next;
 	}
@@ -98,7 +95,7 @@ void	ft_solve_complex(t_data *data)
 		iterations = 0;
 		while (iterations < size)
 		{
-			if ((find_first_node(data->a)->index & i) == 0)
+			if ((data->a->index & i) == 0)
 				ft_pb(data);
 			else
 				ft_ra(data);

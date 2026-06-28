@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_push.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mreyes-m <mreyes-m@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: ilopez-g <ilopez-g@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/07 20:20:56 by mreyes-m          #+#    #+#             */
-/*   Updated: 2026/06/16 17:06:25 by mreyes-m         ###   ########.fr       */
+/*   Updated: 2026/06/28 19:34:04 by ilopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_push(t_stack_node **src, t_stack_node **dest)
+static void	ft_push(t_stack_node **src, t_stack_node **dest)
 {
 	t_stack_node	*node_pushed;
 
@@ -32,7 +32,8 @@ void	ft_push(t_stack_node **src, t_stack_node **dest)
 void	ft_pb(t_data *data)
 {
 	ft_push(&data->a, &data->b);
-	write(1, "pb\n", 3);
+	if (!data->flags->silence)
+		write(1, "pb\n", 3);
 	data->bench->pb++;
 	data->bench->total_ops++;
 }
@@ -40,7 +41,8 @@ void	ft_pb(t_data *data)
 void	ft_pa(t_data *data)
 {
 	ft_push(&data->b, &data->a);
-	write(1, "pa\n", 3);
+	if (!data->flags->silence)
+		write(1, "pa\n", 3);
 	data->bench->pa++;
 	data->bench->total_ops++;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mreyes-m <mreyes-m@student.42barcelon      +#+  +:+       +#+        */
+/*   By: ilopez-g <ilopez-g@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 11:33:50 by mreyes-m          #+#    #+#             */
-/*   Updated: 2026/06/01 11:34:58 by mreyes-m         ###   ########.fr       */
+/*   Updated: 2026/06/28 18:25:55 by ilopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,14 @@ static char	*fill_word(char const *s, char c)
 	return (word);
 }
 
-static void	free_all(char **res, int i)
+void	free_split(char **v)
 {
-	while (i > 0)
-		free (res[--i]);
-	free (res);
+	int	i;
+
+	i = 0;
+	while (v[i])
+		free(v[i++]);
+	free(v);
 }
 
 char	**ft_split(char const *s, char c)
@@ -87,7 +90,7 @@ char	**ft_split(char const *s, char c)
 		{
 			res[i] = fill_word(s, c);
 			if (!res[i])
-				return (free_all(res, i), NULL);
+				return (free_split(res), NULL);
 			i++;
 			while (*s && *s != c)
 				s++;

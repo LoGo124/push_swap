@@ -6,52 +6,28 @@
 /*   By: ilopez-g <ilopez-g@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/04 12:41:41 by ilopez-g          #+#    #+#             */
-/*   Updated: 2026/06/24 13:24:28 by ilopez-g         ###   ########.fr       */
+/*   Updated: 2026/06/28 19:38:52 by ilopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	append_node(t_stack_node **node, int value)
+static void	stack_fill(t_data *data, char **v)
 {
-	t_stack_node	*new_node;
-	t_stack_node	*last_node;
-
-	if (!node)
-		return ;
-	new_node = (t_stack_node *)malloc(sizeof(t_stack_node));
-	if (!new_node)
-		return ;
-	new_node->value = value;
-	new_node->next = NULL;
-	new_node->index = -1;
-	if (*node == NULL)
-	{
-		*node = new_node;
-		new_node->prev = NULL;
-	}
-	else
-	{
-		last_node = find_last_node(*node);
-		last_node->next = new_node;
-		new_node->prev = last_node;
-	}
-}
-
-void	stack_fill(t_data *data, char **v)
-{
-	int				i;
+	int		i;
+	long	curr_n;
 
 	i = 0;
 	while (v[i])
 	{
-		if (!ft_is_number(v[i]))
+		curr_n = ft_atoi(v[i]);
+		if (!is_number(v[i]) || curr_n < -2147483648 || curr_n >= 2147483648)
 			ft_exit(data);
-		append_node(&data->a, ft_atoi(v[i++]));
+		ft_append_node(&data->a, ft_atoi(v[i++]));
 	}
 }
 
-int	check_stack(t_stack_node *node)
+static int	check_stack(t_stack_node *node)
 {
 	t_stack_node	*compared_node;
 
@@ -71,17 +47,33 @@ int	check_stack(t_stack_node *node)
 	return (1);
 }
 
+void	free_stack(t_stack_node **node)
+{
+	t_stack_node	*temp;
+
+	while (*node)
+	{
+		temp = *node;
+		*node = (*node)->next;
+		free(temp);
+	}
+}
+
 void	ft_load_stack(t_data *data, char **av)
 {
 	int		i;
+	long	curr_n;
 	char	**splited_arg;
 
 	i = -1;
 	while (av[++i])
 	{
-		if (ft_is_number(av[i]))
-			append_node(&data->a, ft_atoi(av[i]));
-		else if (!ft_is_flag(av[i]))
+		curr_n = ft_atoi(av[i]);
+		if (curr_n < -2147483648 || curr_n >= 2147483648)
+			ft_exit(data);
+		else if (is_number(av[i]))
+			ft_append_node(&data->a, ft_atoi(av[i]));
+		else if (!is_flag(av[i]))
 		{
 			splited_arg = ft_split(av[i], ' ');
 			if (!splited_arg)

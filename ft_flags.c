@@ -6,7 +6,7 @@
 /*   By: ilopez-g <ilopez-g@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 12:17:40 by ilopez-g          #+#    #+#             */
-/*   Updated: 2026/06/24 13:23:42 by ilopez-g         ###   ########.fr       */
+/*   Updated: 2026/06/28 19:32:01 by ilopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,16 @@ void	ft_init_flags(t_data *data)
 	if (!data->flags)
 		ft_exit(data);
 	data->flags->bench = 0;
-	data->flags->verbose = 0;
+	data->flags->silence = 0;
 	data->flags->adapt = 0;
 	data->flags->simple = 0;
 	data->flags->medium = 0;
 	data->flags->complex = 0;
 }
 
-int	ft_is_flag(char *str)
+int	is_flag(char *str)
 {
-	if (!ft_memcmp(str, "--verbose", 9))
+	if (!ft_memcmp(str, "--silence", 9))
 		return (1);
 	else if (!ft_memcmp(str, "--bench", 7))
 		return (1);
@@ -42,7 +42,7 @@ int	ft_is_flag(char *str)
 	return (0);
 }
 
-int	ft_check_flags(t_flags *flags)
+static int	ft_check_flags(t_flags *flags)
 {
 	int	i;
 
@@ -63,8 +63,8 @@ void	ft_load_flags(t_data *data, char **av)
 	i = -1;
 	while (av[++i])
 	{
-		if (!ft_memcmp(av[i], "--verbose", 9))
-			data->flags->verbose += 1;
+		if (!ft_memcmp(av[i], "--silence", 9))
+			data->flags->silence += 1;
 		else if (!ft_memcmp(av[i], "--bench", 7))
 			data->flags->bench += 1;
 		else if (!ft_memcmp(av[i], "--adaptative", 12))
