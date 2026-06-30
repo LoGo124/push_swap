@@ -6,13 +6,13 @@
 /*   By: ilopez-g <ilopez-g@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/04 12:41:41 by ilopez-g          #+#    #+#             */
-/*   Updated: 2026/06/28 19:38:52 by ilopez-g         ###   ########.fr       */
+/*   Updated: 2026/06/30 16:21:28 by ilopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	stack_fill(t_data *data, char **v)
+void	ft_stack_fill(t_data *data, char **v)
 {
 	int		i;
 	long	curr_n;
@@ -27,7 +27,7 @@ static void	stack_fill(t_data *data, char **v)
 	}
 }
 
-static int	check_stack(t_stack_node *node)
+int	ft_check_stack(t_stack_node *node)
 {
 	t_stack_node	*compared_node;
 
@@ -78,10 +78,10 @@ void	ft_load_stack(t_data *data, char **av)
 			splited_arg = ft_split(av[i], ' ');
 			if (!splited_arg)
 				ft_exit(data);
-			stack_fill(data, splited_arg);
+			ft_stack_fill(data, splited_arg);
 			free_split(splited_arg);
 		}
 	}
-	if (!check_stack(data->a))
+	if (!ft_check_stack(data->a))
 		ft_exit(data);
 }

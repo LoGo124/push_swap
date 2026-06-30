@@ -6,7 +6,7 @@
 /*   By: ilopez-g <ilopez-g@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/07 20:22:39 by mreyes-m          #+#    #+#             */
-/*   Updated: 2026/06/28 19:34:30 by ilopez-g         ###   ########.fr       */
+/*   Updated: 2026/06/30 18:41:55 by ilopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static void	ft_swap(t_stack_node **node)
 	second->next = third;
 	if (third)
 		third->prev = second;
+	*node = first;
 }
 
 void	ft_sa(t_data *data)

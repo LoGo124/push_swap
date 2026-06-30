@@ -6,7 +6,7 @@
 /*   By: ilopez-g <ilopez-g@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 12:17:40 by ilopez-g          #+#    #+#             */
-/*   Updated: 2026/06/28 19:32:01 by ilopez-g         ###   ########.fr       */
+/*   Updated: 2026/06/30 18:14:31 by ilopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ int	is_flag(char *str)
 		return (1);
 	else if (!ft_memcmp(str, "--bench", 7))
 		return (1);
-	else if (!ft_memcmp(str, "--adaptative", 12))
+	else if (!ft_memcmp(str, "--adaptive", 10))
 		return (1);
 	else if (!ft_memcmp(str, "--simple", 8))
 		return (1);
-	else if (!ft_memcmp(str, "--intermediate", 14))
+	else if (!ft_memcmp(str, "--medium", 9))
 		return (1);
 	else if (!ft_memcmp(str, "--complex", 9))
 		return (1);
@@ -67,11 +67,11 @@ void	ft_load_flags(t_data *data, char **av)
 			data->flags->silence += 1;
 		else if (!ft_memcmp(av[i], "--bench", 7))
 			data->flags->bench += 1;
-		else if (!ft_memcmp(av[i], "--adaptative", 12))
+		else if (!ft_memcmp(av[i], "--adaptive", 10))
 			data->flags->adapt += 1;
 		else if (!ft_memcmp(av[i], "--simple", 8))
 			data->flags->simple += 1;
-		else if (!ft_memcmp(av[i], "--intermediate", 14))
+		else if (!ft_memcmp(av[i], "--medium", 9))
 			data->flags->medium += 1;
 		else if (!ft_memcmp(av[i], "--complex", 9))
 			data->flags->complex += 1;
