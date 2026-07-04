@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Justificación de umbrales limite</title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    max-width:1200px;
+    margin:auto;
+}
+.chart-container{
+    margin:40px 0;
+    height:450px;
+}
+</style>
+</head>
+<body>
+
+<h2>1r error</h2>
+<div class="chart-container">
+    <canvas id="chart1"></canvas>
+</div>
+
+<h2>1rª solución + 2nº error</h2>
+<div class="chart-container">
+    <canvas id="chart2"></canvas>
+</div>
+
+<h2>2nª Solución</h2>
+<div class="chart-container">
+    <canvas id="chart3"></canvas>
+</div>
+
+<h2>Resultado final, vista general</h2>
+<div class="chart-container">
+    <canvas id="chart4"></canvas>
+</div>
+
+<script>
+
+function createChart(canvasId, data, title){
+
+    new Chart(document.getElementById(canvasId),{
+        type:'line',
+        data:{
+            labels:data.size,
+            datasets:[
+                {
+                    label:'Simple',
+                    data:data.simple,
+                    borderWidth:2,
+                    tension:0.2
+                },
+                {
+                    label:'Intermediate',
+                    data:data.intermediate,
+                    borderWidth:2,
+                    tension:0.2
+                },
+                {
+                    label:'Complex',
+                    data:data.complex,
+                    borderWidth:2,
+                    tension:0.2
+                },
+                {
+                    label:'Adaptative',
+                    data:data.adaptative,
+                    borderWidth:2,
+                    tension:0.2
+                }
+            ]
+        },
+        options:{
+            responsive:true,
+            maintainAspectRatio:false,
+            interaction:{
+                mode:'index',
+                intersect:false
+            },
+            plugins:{
+                title:{
+                    display:true,
+                    text:title
+                },
+                legend:{
+                    position:'top'
+                }
+            },
+            scales:{
+                x:{
+                    title:{
+                        display:true,
+                        text:'Size'
+                    }
+                },
+                y:{
+                    title:{
+                        display:true,
+                        text:'Tiempo'
+                    }
+                }
+            }
+        }
+    });
+
+}
+
+
+createChart("chart0", {
+    size: [3, 5, 8, 10, 12, 15],
+    simple: [6.36, 12.92, 24.50, 32.56, 44.08, 59.14],
+    medium: [7.02, 14.80, 25.98, 35.24, 43.16, 55.56],
+    complex: [8.60, 24.50, 36.00, 65.00, 76.00, 92.00],
+    adaptive: [8.00, 20.96, 30.80, 51.32, 62.02, 68.36],
+}, "Eficiencia promedio umbrales del enunciado.")
+
+createChart("chart1", {
+	size: [5, 10, 15, 25, 50, 100, 250, 500, 1000],
+    simple: [8.06, 32.80, 58.58, 130.48, 423.28, 1459.42, 8319.54, 32407.27, 126667.39],
+    intermediate: [8.76, 34.38, 55.60, 101.88, 260.46, 695.87, 2815.98, 7038.61, 19368.61],
+    complex: [9.16, 65.00, 92.00, 196.00, 467.00, 1084.00, 3017.00, 6784.00, 15068.00],
+    adaptative: [8.86, 33.42, 55.32, 103.00, 261.88, 687.33, 2813.91, 6879.11, 17228.32]
+}, "Primer error de eficiencia.");
+
+createChart("chart2", {
+	size: [8, 10, 12, 15, 25, 50, 100],
+    simple: [23.72, 33.38, 42.74, 59.82, 132.24, 423.28, 1474.50],
+    intermediate: [24.34, 34.08, 42.84, 56.26, 102.68, 258.52, 698.84],
+    complex: [24.42, 65.00, 76.00, 92.00, 196.00, 467.00, 1084.00],
+    adaptative: [24.52, 33.14, 60.68, 68.94, 149.98, 357.70, 886.16]
+}, "Error de eficiencia corregido y deteccion de nuevo error deribado de la correccion.");
+
+createChart("chart3", {
+	size: [8, 10, 12, 15, 25, 50, 100],
+	simple: [23.40, 32.54, 42.78, 59.04, 131.74, 410.76, 1465.88],
+	intermediate: [23.38, 33.36, 42.86, 56.02, 101.54, 261.12, 699.58],
+	complex: [24.86, 65.00, 76.00, 92.00, 196.00, 467.00, 1084.00],
+	adaptative: [23.68, 34.06, 44.26, 57.06, 102.08, 259.00, 686.40]
+}, "Correccion del segundo error de eficiencia.");
+
+createChart("chart4", {
+		size: [8, 10, 12, 15, 25, 50, 100, 250, 500, 1000, 1500, 2000],
+		simple: [23.40, 32.54, 42.78, 59.04, 131.74, 410.76, 1465.88, 8384.16, 32201.00, 127221.44, 283465.08, 504682.66],
+		intermediate: [23.38, 33.36, 42.86, 56.02, 101.54, 261.12, 699.58, 2839.88, 7093.80, 19325.52, 36300.78, 57566.78],
+		complex: [24.86, 65.00, 76.00, 92.00, 196.00, 467.00, 1084.00, 3017.00, 6784.00, 15068.00, 25336.00, 33136.00],
+		adaptative: [23.68, 34.06, 44.26, 57.06, 102.08, 259.00, 686.40, 2819.28, 6784.00, 15068.00, 25336.00, 33136.00]
+	}, "Resultado general");
+
+</script>
+
+</body>
+</html>

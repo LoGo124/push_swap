@@ -5,8 +5,8 @@ BINARY="./push_swap"
 RESULTS="bench-results.csv"
 SUMMARY="bench-summary.csv"
 
-SIZES=(8 10 12 15 25 50 100 250 500 1000 1500 2000)
-ALGOS=("--simple" "--intermediate" "--complex" "--adaptative") 
+SIZES=(400 420 440 460 480 500) #SIZES=(8 10 12 15 25 50 100 250 500 1000)
+ALGOS=("--medium" "--complex" "--adaptive") 
 TRIALS=50
 
 function ensure_binary() {
@@ -49,7 +49,7 @@ function run_benchmarks() {
 }
 
 function summarize_results() {
-  echo "size,simple,intermediate,complex,adaptative" > "$SUMMARY"
+  echo "size,simple,medium,complex,adaptive" > "$SUMMARY"
 
   python3 <<'PY'
 import csv
@@ -65,10 +65,10 @@ with open('bench-results.csv', newline='') as f:
         results[size][algo].append(ops)
 
 sizes = sorted(results.keys())
-algos = ['simple', 'intermediate', 'complex', 'adaptative']
+algos = ['simple', 'medium', 'complex', 'adaptive']
 with open('bench-summary.csv', 'w', newline='') as f:
     writer = csv.writer(f)
-    writer.writerow(['size', 'simple', 'intermediate', 'complex', 'adaptative'])
+    writer.writerow(['size', 'simple', 'medium', 'complex', 'adaptive'])
     for size in sizes:
         row = [size]
         for algo in algos:

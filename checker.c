@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilopez-g <ilopez-g@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: mreyes-m <mreyes-m@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/28 16:55:52 by mreyes-m          #+#    #+#             */
-/*   Updated: 2026/06/30 17:46:10 by ilopez-g         ###   ########.fr       */
+/*   Updated: 2026/07/04 10:50:47 by mreyes-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	load_stack(t_data *data, char **av)
 		if (curr_n < -2147483648 || curr_n >= 2147483648)
 			ft_exit(data);
 		else if (is_number(av[i]))
-			ft_append_node(&data->a, ft_atoi(av[i]));
+			ft_append_node(&data->a, curr_n);
 		else
 		{
 			splited_arg = ft_split(av[i], ' ');

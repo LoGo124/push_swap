@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_stack.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilopez-g <ilopez-g@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: mreyes-m <mreyes-m@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/04 12:41:41 by ilopez-g          #+#    #+#             */
-/*   Updated: 2026/06/30 16:21:28 by ilopez-g         ###   ########.fr       */
+/*   Updated: 2026/07/04 11:49:48 by mreyes-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	ft_load_stack(t_data *data, char **av)
 		if (curr_n < -2147483648 || curr_n >= 2147483648)
 			ft_exit(data);
 		else if (is_number(av[i]))
-			ft_append_node(&data->a, ft_atoi(av[i]));
+			ft_append_node(&data->a, curr_n);
 		else if (!is_flag(av[i]))
 		{
 			splited_arg = ft_split(av[i], ' ');

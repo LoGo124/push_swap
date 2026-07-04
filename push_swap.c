@@ -6,7 +6,7 @@
 /*   By: ilopez-g <ilopez-g@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 08:39:23 by mreyes-m          #+#    #+#             */
-/*   Updated: 2026/06/28 18:13:02 by ilopez-g         ###   ########.fr       */
+/*   Updated: 2026/07/04 12:38:45 by ilopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	select_strategy(t_data *data)
 {
 	if (data->bench->disorder < 0.2 || ft_lstsize(data->a) < 12)
 		data->flags->simple = 1;
-	else if (data->bench->disorder < 0.65 && ft_lstsize(data->a) < 470)
+	else if (data->bench->disorder < 0.5)
 		data->flags->medium = 1;
 	else
 		data->flags->complex = 1;

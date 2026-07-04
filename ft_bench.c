@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bench.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilopez-g <ilopez-g@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: mreyes-m <mreyes-m@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/04 12:35:41 by ilopez-g          #+#    #+#             */
-/*   Updated: 2026/06/28 17:54:18 by ilopez-g         ###   ########.fr       */
+/*   Updated: 2026/07/04 12:43:01 by mreyes-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,16 @@ void	ft_update_bench(t_data *data)
 	if (data->flags->adapt)
 	{
 		if (data->flags->simple)
-			data->bench->strategy = "Adaptative / O(n^2)";
+			data->bench->strategy = "Adaptive / O(n^2)";
 		else if (data->flags->medium)
-			data->bench->strategy = "Adaptative / O(n√n)";
+			data->bench->strategy = "Adaptive / O(n√n)";
 		else if (data->flags->complex)
-			data->bench->strategy = "Adaptative / O(n log n)";
+			data->bench->strategy = "Adaptive / O(n log n)";
 	}
 	else if (data->flags->simple)
 		data->bench->strategy = "Simple / O(n^2)";
 	else if (data->flags->medium)
-		data->bench->strategy = "Intermediate / O(n√n)";
+		data->bench->strategy = "Medium / O(n√n)";
 	else if (data->flags->complex)
 		data->bench->strategy = "Complex / O(n log n)";
 }
