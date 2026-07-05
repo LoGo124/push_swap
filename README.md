@@ -184,16 +184,26 @@ El objetivo fue encontrar puntos de transición donde un algoritmo comienza a su
 
 Los umbrales no responden a una propiedad matemática concreta, sino a un compromiso entre:
 
-- Número de operaciones.
-- Tiempo de ejecución.
+- Número de operaciones. (Prioridad)
 - Simplicidad del algoritmo.
 - Comportamiento observado durante las pruebas.
 
-> **Nota:** Sustituye esta sección por los valores reales utilizados en tu implementación. Por ejemplo:
->
-> - Hasta **50** elementos → Estrategia A.
-> - Entre **51 y 100** → Estrategia B.
-> - Entre **101 y 500** → Estrategia C.
+Para decidir estos umbrales se realizo un estudio estadistico donde se analiza la eficiencia de cada algoritmo en funcion del tamaño, durante el analisis, se observan ineficiencias y se solucionan editando las expresiones logicas que seleccionan el algoritmo. El proceso de analisi, solucion y justificacion se detalla en el siguiente archivo solo accesible desde el repositorio [push_swap](https://github.com/LoGo124/push_swap) en el fichero [anexos/charts_from_csvs.html](https://github.com/LoGo124/push_swap/blob/main/anexos/charts_from_csvs.html) Github  o [Github Pages](https://logo124.github.io/push_swap/anexos/charts_from_csvs.html)
+
+> Nota: 
+> Puedes descargar el html en la carpeta '/tmp' y consultar-lo con este comando, el sistema ya borrara el archivo.
+
+"""sh
+curl https://raw.githubusercontent.com/LoGo124/push_swap/refs/heads/main/anexos/charts_from_csvs.html > /tmp/push_swap-charts.html && open /tmp/push_swap-charts.html
+"""
+> Nota: 
+> Soy un poco perezoso y solo es compatible con gnome, siempre puedes remplazar el comando 'open'
+
+Umbrales establecidos
+- Hasta **8** elementos → Tiny sort (Hardcoded).
+- Entre **8 y 12** elementos o indice de desorden inferior a **0.2** → Algoritmo simple.
+- Entre **12 y 470** elementos y indice de desorden entre **0.2 y 0.7** → Algoritmo intermedio.
+- A partir de **470** elementos o indice de desorden superior a **0.7** → Algoritmo complejo.
 
 ---
 
