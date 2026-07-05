@@ -5,8 +5,8 @@ BINARY="./push_swap"
 RESULTS="bench-results.csv"
 SUMMARY="bench-summary.csv"
 
-SIZES=(400 420 440 460 480 500) #SIZES=(8 10 12 15 25 50 100 250 500 1000)
-ALGOS=("--medium" "--complex" "--adaptive") 
+SIZES=(8 10 12 15 50 100 250 500 1000)
+ALGOS=("--simple" "--medium" "--complex" "--adaptive") 
 TRIALS=50
 
 function ensure_binary() {
