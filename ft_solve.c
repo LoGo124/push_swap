@@ -6,7 +6,7 @@
 /*   By: ilopez-g <ilopez-g@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 16:03:05 by ilopez-g          #+#    #+#             */
-/*   Updated: 2026/06/28 18:58:35 by ilopez-g         ###   ########.fr       */
+/*   Updated: 2026/07/05 14:47:52 by ilopez-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static void	tiny_sort(t_data *data)
 {
 	t_stack_node	*node;
 
-	if (!(data->a) || !(&data->a) || ft_lstsize(data->a) <= 1)
+	if (!(data->a) || ft_lstsize(data->a) <= 1)
 		return ;
 	if (ft_lstsize(data->a) == 2)
 		ft_sa(data);
