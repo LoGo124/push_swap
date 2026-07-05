@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Charts from CSV files</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 1200px; margin: 2rem auto; padding: 0 1rem; }
+    .chart-card { margin: 2rem 0; padding: 1rem 1.2rem; border: 1px solid #ddd; border-radius: 8px; }
+    .chart-container { height: 420px; }
+    .description-box { margin: 0.8rem 0 1rem; }
+    .description-box textarea { width: 100%; min-height: 70px; padding: 0.6rem; border: 1px solid #ccc; border-radius: 6px; resize: vertical; }
+    hr { border: 0; height: 1px; background: #ddd; margin: 2rem 0; }
+  </style>
+</head>
+<body>
+  <h1>Charts generated from CSV files</h1>
+  <div id="charts"></div>
+
+  <script>
+    const chartConfigs = [{"title": "00 Estado inicial", "size": [3.0, 5.0, 8.0, 10.0, 12.0, 15.0, 25.0, 50.0, 100.0, 250.0, 500.0, 1000.0], "datasets": [{"label": "simple", "data": [6.36, 12.92, 24.5, 32.56, 44.08, 59.0, 130.84, 420.9, 1454.14, 8285.6, 32078.86, 126897.26], "borderWidth": 2, "tension": 0.2, "pointRadius": 3}, {"label": "medium", "data": [7.02, 14.8, 25.98, 35.24, 43.16, 54.94, 101.8, 261.88, 678.36, 2757.8, 7029.56, 19343.0], "borderWidth": 2, "tension": 0.2, "pointRadius": 3}, {"label": "complex", "data": [8.6, 24.5, 36.0, 65.0, 76.0, 92.0, 196.0, 467.0, 1084.0, 3017.0, 6784.0, 15068.0], "borderWidth": 2, "tension": 0.2, "pointRadius": 3}, {"label": "adaptive", "data": [8.0, 20.96, 30.8, 51.32, 62.02, 72.66, 158.92, 378.48, 931.52, 2913.22, 6914.78, 17776.4], "borderWidth": 2, "tension": 0.2, "pointRadius": 3}]}, {"title": "01 Estado inicial (3 25)", "size": [3.0, 5.0, 8.0, 10.0, 12.0, 15.0, 25.0], "datasets": [{"label": "simple", "data": [6.36, 12.92, 24.5, 32.56, 44.08, 59.0, 130.84], "borderWidth": 2, "tension": 0.2, "pointRadius": 3}, {"label": "medium", "data": [7.02, 14.8, 25.98, 35.24, 43.16, 54.94, 101.8], "borderWidth": 2, "tension": 0.2, "pointRadius": 3}, {"label": "complex", "data": [8.6, 24.5, 36.0, 65.0, 76.0, 92.0, 196.0], "borderWidth": 2, "tension": 0.2, "pointRadius": 3}, {"label": "adaptive", "data": [8.0, 20.96, 30.8, 51.32, 62.02, 72.66, 158.92], "borderWidth": 2, "tension": 0.2, "pointRadius": 3}, {"label": "tiny_sort", "data": [1.1, 8.76, 23.16, 34.78, 50.6, 73.5, 194.64], "borderWidth": 2, "tension": 0.2, "pointRadius": 3}]}, {"title": "10 Umbral Tiny sort (3 25)", "size": [3.0, 5.0, 8.0, 10.0, 12.0, 15.0, 25.0], "datasets": [{"label": "simple", "data": [1.06, 9.44, 23.76, 33.38, 42.68, 59.56, 131.04], "borderWidth": 2, "tension": 0.2, "pointRadius": 3}, {"label": "medium", "data": [1.38, 8.36, 23.86, 34.64, 43.92, 55.12, 100.74], "borderWidth": 2, "tension": 0.2, "pointRadius": 3}, {"label": "complex", "data": [1.16, 9.04, 24.08, 65.0, 76.0, 92.0, 196.0], "borderWidth": 2, "tension": 0.2, "pointRadius": 3}, {"label": "adaptive", "data": [1.22, 8.6, 23.68, 52.06, 57.36, 77.08, 143.34], "borderWidth": 2, "tension": 0.2, "pointRadius": 3}]}, {"title": "20 Umbral Simple (8 25)", "size": [8.0, 10.0, 12.0, 15.0, 25.0], "datasets": [{"label": "simple", "data": [24.1, 33.62, 43.3, 58.94, 129.84], "borderWidth": 2, "tension": 0.2, "pointRadius": 3}, {"label": "medium", "data": [23.88, 34.2, 42.78, 55.46, 101.74], "borderWidth": 2, "tension": 0.2, "pointRadius": 3}, {"label": "complex", "data": [23.86, 65.0, 76.0, 92.0, 196.0], "borderWidth": 2, "tension": 0.2, "pointRadius": 3}, {"label": "adaptive", "data": [24.12, 33.26, 62.06, 74.32, 140.68], "borderWidth": 2, "tension": 0.2, "pointRadius": 3}]}, {"title": "21 Umbral Medium (400 500)", "size": [400.0, 420.0, 440.0, 460.0, 480.0, 500.0], "datasets": [{"label": "simple", "data": [NaN, NaN, NaN, NaN, NaN, NaN], "borderWidth": 2, "tension": 0.2, "pointRadius": 3}, {"label": "medium", "data": [5128.42, 5571.34, 5934.94, 6212.02, 6685.24, 7004.94], "borderWidth": 2, "tension": 0.2, "pointRadius": 3}, {"label": "complex", "data": [5536.0, 5800.0, 6052.0, 6304.0, 6544.0, 6784.0], "borderWidth": 2, "tension": 0.2, "pointRadius": 3}, {"label": "adaptive", "data": [5327.44, 5659.8, 5988.56, 6290.2, 6541.0, 6911.1], "borderWidth": 2, "tension": 0.2, "pointRadius": 3}]}, {"title": "30 Umbral Medium vs Complex (400 500)", "size": [400.0, 420.0, 440.0, 460.0, 480.0, 500.0], "datasets": [{"label": "simple", "data": [NaN, NaN, NaN, NaN, NaN, NaN], "borderWidth": 2, "tension": 0.2, "pointRadius": 3}, {"label": "medium", "data": [5174.78, 5594.26, 5860.1, 6254.14, 6647.7, 7004.7], "borderWidth": 2, "tension": 0.2, "pointRadius": 3}, {"label": "complex", "data": [5536.0, 5800.0, 6052.0, 6304.0, 6544.0, 6784.0], "borderWidth": 2, "tension": 0.2, "pointRadius": 3}, {"label": "adaptive", "data": [5189.82, 5551.72, 5840.76, 6260.3, 6599.26, 6975.98], "borderWidth": 2, "tension": 0.2, "pointRadius": 3}]}, {"title": "40 Estado final", "size": [8.0, 10.0, 12.0, 15.0, 25.0, 50.0, 100.0, 250.0, 500.0, 1000.0], "datasets": [{"label": "simple", "data": [23.36, 33.38, 42.14, 58.32, 129.58, 413.34, 1467.26, 8345.78, 32142.3, 127737.2], "borderWidth": 2, "tension": 0.2, "pointRadius": 3}, {"label": "medium", "data": [24.3, 34.96, 43.06, 55.32, 101.9, 255.88, 687.96, 2781.1, 7030.72, 19339.4], "borderWidth": 2, "tension": 0.2, "pointRadius": 3}, {"label": "complex", "data": [24.06, 65.0, 76.0, 92.0, 196.0, 467.0, 1084.0, 3017.0, 6784.0, 15068.0], "borderWidth": 2, "tension": 0.2, "pointRadius": 3}, {"label": "adaptive", "data": [24.72, 33.44, 42.68, 55.74, 101.78, 259.14, 684.34, 2804.38, 6784.0, 15068.0], "borderWidth": 2, "tension": 0.2, "pointRadius": 3}]}, {"title": "41 Estado final (8 25)", "size": [8.0, 10.0, 12.0, 15.0, 25.0], "datasets": [{"label": "simple", "data": [23.36, 33.38, 42.14, 58.32, 129.58], "borderWidth": 2, "tension": 0.2, "pointRadius": 3}, {"label": "medium", "data": [24.3, 34.96, 43.06, 55.32, 101.9], "borderWidth": 2, "tension": 0.2, "pointRadius": 3}, {"label": "complex", "data": [24.06, 65.0, 76.0, 92.0, 196.0], "borderWidth": 2, "tension": 0.2, "pointRadius": 3}, {"label": "adaptive", "data": [24.72, 33.44, 42.68, 55.74, 101.78], "borderWidth": 2, "tension": 0.2, "pointRadius": 3}]}, {"title": "42 Estado final (100 1000)", "size": [100.0, 250.0, 500.0, 1000.0], "datasets": [{"label": "simple", "data": [1467.26, 8345.78, 32142.3, 127737.2], "borderWidth": 2, "tension": 0.2, "pointRadius": 3}, {"label": "medium", "data": [687.96, 2781.1, 7030.72, 19339.4], "borderWidth": 2, "tension": 0.2, "pointRadius": 3}, {"label": "complex", "data": [1084.0, 3017.0, 6784.0, 15068.0], "borderWidth": 2, "tension": 0.2, "pointRadius": 3}, {"label": "adaptive", "data": [684.34, 2804.38, 6784.0, 15068.0], "borderWidth": 2, "tension": 0.2, "pointRadius": 3}]}, {"title": "43 Estado final (400 500)", "size": [400.0, 420.0, 440.0, 460.0, 480.0, 500.0], "datasets": [{"label": "simple", "data": [NaN, NaN, NaN, NaN, NaN, NaN], "borderWidth": 2, "tension": 0.2, "pointRadius": 3}, {"label": "medium", "data": [5215.98, 5546.12, 5895.04, 6303.6, 6700.54, 7103.04], "borderWidth": 2, "tension": 0.2, "pointRadius": 3}, {"label": "complex", "data": [5536.0, 5800.0, 6052.0, 6304.0, 6544.0, 6784.0], "borderWidth": 2, "tension": 0.2, "pointRadius": 3}, {"label": "adaptive", "data": [5167.8, 5546.7, 5917.18, 6309.78, 6544.0, 6784.0], "borderWidth": 2, "tension": 0.2, "pointRadius": 3}]}];
+
+    const palette = ['#4e79a7', '#f28e2b', '#e15759', '#76b7b2', '#59a14f', '#edc949', '#af7aa1', '#ff9da7', '#9c755f', '#bab0ab'];
+
+    function getColor(label, alpha = 1) {
+      const index = Math.abs(label.split('').reduce((acc, ch) => acc + ch.charCodeAt(0), 0)) % palette.length;
+      const base = palette[index];
+      if (alpha === 1) return base;
+      const hex = base.replace('#', '');
+      const r = parseInt(hex.slice(0, 2), 16);
+      const g = parseInt(hex.slice(2, 4), 16);
+      const b = parseInt(hex.slice(4, 6), 16);
+      return 'rgba(' + r + ', ' + g + ', ' + b + ', ' + alpha + ')';
+    }
+
+    function createChart(container, config) {
+      const canvas = document.createElement('canvas');
+      container.appendChild(canvas);
+      new Chart(canvas, {
+        type: 'line',
+        data: {
+          labels: config.size,
+          datasets: config.datasets.map((dataset) => ({
+            ...dataset,
+            borderColor: getColor(dataset.label),
+            backgroundColor: getColor(dataset.label, 0.2),
+            fill: false,
+          }))
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          interaction: { mode: 'index', intersect: false },
+          plugins: {
+            title: { display: true, text: config.title },
+            legend: { position: 'top' }
+          },
+          scales: {
+            x: { title: { display: true, text: 'Size' } },
+            y: { title: { display: true, text: 'Value' } }
+          }
+        }
+      });
+    }
+
+    const chartsContainer = document.getElementById('charts');
+    chartConfigs.forEach((config, index) => {
+      const card = document.createElement('section');
+      card.className = 'chart-card';
+      card.innerHTML = '<h2>' + config.title + '</h2>' +
+        '<div class="description-box"><label for="desc-' + index + '">Descripción</label><textarea id="desc-' + index + '" placeholder="Añade una descripción aquí..."></textarea></div>' +
+        '<div class="chart-container"></div>';
+      chartsContainer.appendChild(card);
+      createChart(card.querySelector('.chart-container'), config);
+      if (index < chartConfigs.length - 1) {
+        const separator = document.createElement('hr');
+        chartsContainer.appendChild(separator);
+      }
+    });
+  </script>
+</body>
+</html>
