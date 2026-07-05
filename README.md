@@ -193,9 +193,9 @@ Para decidir estos umbrales se realizo un estudio estadistico donde se analiza l
 > Nota: 
 > Puedes descargar el html en la carpeta '/tmp' y consultar-lo con este comando, el sistema ya borrara el archivo.
 
-'''sh
+```sh
 curl https://raw.githubusercontent.com/LoGo124/push_swap/refs/heads/main/anexos/charts_from_csvs.html > /tmp/push_swap-charts.html && open /tmp/push_swap-charts.html
-'''
+```
 > Nota: 
 > Soy un poco perezoso y solo es compatible con gnome, siempre puedes remplazar el comando 'open'
 
